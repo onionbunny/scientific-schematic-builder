@@ -1,0 +1,56 @@
+{
+  "comment": "Reference export presets. Values are commonly documented author guidelines; an explicit task/template requirement always overrides these. Raster DPI: line art vs halftone.",
+  "nature": {
+    "max_width_mm": 180,
+    "single_column_mm": 89,
+    "double_column_mm": 180,
+    "dpi_line": 600,
+    "dpi_halftone": 300,
+    "min_font_pt": 7,
+    "min_line_pt": 0.5,
+    "accepted_formats": ["pdf", "eps", "svg", "tiff", "png"],
+    "colorspace": "RGB for review; CMYK conversion handled at production"
+  },
+  "science": {
+    "max_width_mm": 183,
+    "single_column_mm": 55,
+    "two_column_mm": 120,
+    "three_column_mm": 183,
+    "dpi_line": 600,
+    "dpi_halftone": 300,
+    "min_font_pt": 7,
+    "min_line_pt": 0.5,
+    "accepted_formats": ["pdf", "eps", "tiff", "png"],
+    "colorspace": "RGB/CMYK per author portal"
+  },
+  "cell": {
+    "max_width_mm": 180,
+    "single_column_mm": 85,
+    "double_column_mm": 180,
+    "dpi_line": 600,
+    "dpi_halftone": 300,
+    "min_font_pt": 7,
+    "min_line_pt": 0.5,
+    "accepted_formats": ["pdf", "eps", "tiff", "png"],
+    "colorspace": "RGB"
+  },
+  "plos": {
+    "max_width_mm": 190.5,
+    "single_column_mm": 85.5,
+    "dpi_line": 600,
+    "dpi_halftone": 300,
+    "min_font_pt": 6,
+    "min_line_pt": 0.5,
+    "accepted_formats": ["pdf", "eps", "tiff", "png"],
+    "colorspace": "RGB"
+  },
+  "generic": {
+    "max_width_mm": 200,
+    "dpi_line": 600,
+    "dpi_halftone": 300,
+    "min_font_pt": 7,
+    "min_line_pt": 0.5,
+    "accepted_formats": ["pdf", "svg", "png", "tiff"],
+    "colorspace": "RGB"
+  }
+}

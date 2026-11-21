@@ -1,0 +1,36 @@
+{
+  "spec_version": "1.0",
+  "case_id": "synthetic-chart",
+  "title": "Synthetic data chart (not a real case, for interface demo only)",
+  "sources": [
+    {"id": "S1", "type": "table", "locator": "synthetic measurement table rows 1-3",
+     "quote": "control/treatment cell viability at 24/48/72 h"}
+  ],
+  "canvas": {"font_size_pt": 8, "rankdir": "LR", "background": "white"},
+  "entities": [
+    {"id": "P1", "label": "Panel anchor", "kind": "process", "source_refs": ["S1"]}
+  ],
+  "groups": [],
+  "relations": [],
+  "data_mappings": [
+    {"id": "DM1", "scale_type": "categorical",
+     "domain": ["control", "treatment"],
+     "range": ["#7f8c8d", "#c0392b"], "source_refs": ["S1"]}
+  ],
+  "charts": [
+    {"id": "CH1", "type": "bar", "x_mm": 10, "y_mm": 14, "w_mm": 95, "h_mm": 62,
+     "categories": ["24 h", "48 h", "72 h"],
+     "x_title": "Time", "y_title": "Cell viability", "y_unit": "%",
+     "series": [
+       {"name": "control", "values": [100, 98, 96], "color": "#7f8c8d", "source_refs": ["S1"]},
+       {"name": "treatment", "values": [88, 61, 34], "color": "#c0392b", "source_refs": ["S1"]}
+     ],
+     "source_refs": ["S1"]}
+  ],
+  "legend": {"visible": true, "title": "Legend", "width_mm": 60},
+  "annotations": [
+    {"id": "A1", "kind": "panel-label", "text": "B", "x_mm": 3, "y_mm": 10, "source_refs": ["S1"]}
+  ],
+  "change_log": [],
+  "uncertainty": []
+}

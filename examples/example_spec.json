@@ -1,0 +1,37 @@
+{
+  "spec_version": "1.0",
+  "case_id": "synthetic-example",
+  "title": "Synthetic mini pathway (not a real case, for interface demo only)",
+  "sources": [
+    {"id": "S1", "type": "text", "locator": "synthetic task description paragraph 1", "quote": "Ligand L activates receptor R; R activates kinase K; K inhibits transcription factor T."},
+    {"id": "S2", "type": "table", "locator": "synthetic expression table", "quote": "K=upregulated, T=downregulated"}
+  ],
+  "canvas": {"font_size_pt": 8, "rankdir": "LR", "background": "white"},
+  "entities": [
+    {"id": "L", "label": "Ligand L", "kind": "small_molecule", "source_refs": ["S1"]},
+    {"id": "R", "label": "Receptor R", "kind": "receptor", "group": "G1", "source_refs": ["S1"]},
+    {"id": "K", "label": "Kinase K", "kind": "enzyme", "group": "G1",
+     "mappings": {"fill": {"mapping": "DM1", "value": "upregulated"}}, "source_refs": ["S1", "S2"]},
+    {"id": "T", "label": "Factor T", "kind": "protein",
+     "mappings": {"fill": {"mapping": "DM1", "value": "downregulated"}}, "source_refs": ["S1", "S2"]}
+  ],
+  "groups": [
+    {"id": "G1", "label": "Cell", "contains": ["R", "K"], "source_refs": ["S1"]}
+  ],
+  "relations": [
+    {"id": "R1", "from": "L", "to": "R", "type": "activation", "source_refs": ["S1"]},
+    {"id": "R2", "from": "R", "to": "K", "type": "activation", "label": "p-", "source_refs": ["S1"]},
+    {"id": "R3", "from": "K", "to": "T", "type": "inhibition", "source_refs": ["S1"]}
+  ],
+  "data_mappings": [
+    {"id": "DM1", "scale_type": "categorical",
+     "domain": ["upregulated", "downregulated", "unchanged"],
+     "range": ["#C0392B", "#2471A3", "#B2BABB"], "source_refs": ["S2"]}
+  ],
+  "legend": {"title": "Legend", "width_mm": 60},
+  "annotations": [
+    {"id": "A1", "kind": "panel-label", "text": "A", "x_mm": 3, "y_mm": 9, "source_refs": ["S1"]}
+  ],
+  "change_log": [],
+  "uncertainty": []
+}

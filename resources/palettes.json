@@ -1,0 +1,34 @@
+{
+  "comment": "Colorblind-safe publication palettes. Prefer categorical_okabe_ito for groups; use the same color for one identity across all panels.",
+  "categorical_okabe_ito": {
+    "domain": ["black", "orange", "sky blue", "bluish green", "yellow", "blue", "vermilion", "reddish purple"],
+    "range": ["#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
+  },
+  "categorical_nejm": {
+    "domain": ["c1", "c2", "c3", "c4", "c5", "c6"],
+    "range": ["#BC3C29", "#0072B2", "#E18727", "#20854E", "#7876B1", "#6F99AD"]
+  },
+  "semantic_expression": {
+    "domain": ["upregulated", "downregulated", "unchanged"],
+    "range": ["#C0392B", "#2471A3", "#B2BABB"]
+  },
+  "continuous_heat": {
+    "stops": [
+      {"value": 0, "color": "#2166AC"},
+      {"value": 0.5, "color": "#F7F7F7"},
+      {"value": 1, "color": "#B2182B"}
+    ]
+  },
+  "continuous_viridis_print": {
+    "stops": [
+      {"value": 0, "color": "#440154"},
+      {"value": 0.5, "color": "#21918C"},
+      {"value": 1, "color": "#FDE725"}
+    ]
+  },
+  "grays": {
+    "light": "#F4F6F7",
+    "mid": "#AAB7B8",
+    "dark": "#2C3E50"
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scientific figure specification",
+  "type": "object",
+  "required": ["spec_version", "sources", "entities"],
+  "properties": {
+    "spec_version": {"type": "string"},
+    "case_id": {"type": "string"},
+    "title": {"type": "string"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "locator"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string"},
+          "locator": {"type": "string"},
+          "quote": {"type": "string"}
+        }
+      }
+    },
+    "canvas": {
+      "type": "object",
+      "properties": {
+        "width_mm": {"type": "number"},
+        "height_mm": {"type": "number"},
+        "margin_mm": {"type": "number"},
+        "background": {"type": "string"},
+        "font_family": {"type": "string"},
+        "font_size_pt": {"type": "number"},
+        "rankdir": {"type": "string", "enum": ["LR", "TB"]},
+        "node_w_mm": {"type": "number"},
+        "node_h_mm": {"type": "number"},
+        "gap_x_mm": {"type": "number"},
+        "gap_y_mm": {"type": "number"}
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "source_refs"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "kind": {"type": "string"},
+          "shape": {"type": "string", "enum": ["rect", "round", "capsule", "ellipse", "hex"]},
+          "group": {"type": ["string", "null"]},
+          "fill": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+          "stroke": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+          "font_size_pt": {"type": "number"},
+          "source_refs": {"type": "array", "items": {"type": "string"}},
+          "inferred": {"type": "boolean"},
+          "uncertainty": {"type": "string"},
+          "mappings": {"type": "object"}
+        }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "contains", "source_refs"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "contains": {"type": "array", "items": {"type": "string"}},
+          "fill": {"type": "string"},
+          "stroke": {"type": "string"},
+          "source_refs": {"type": "array", "items": {"type": "string"}},
+          "inferred": {"type": "boolean"}
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "from", "to", "type", "source_refs"],
+        "properties": {
+          "id": {"type": "string"},
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "type": {"type": "string"},
+          "direction": {"type": "string", "enum": ["forward", "bidirectional"]},
+          "label": {"type": "string"},
+          "color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+          "dash": {"type": ["string", "null"]},
+          "marker": {"type": "string", "enum": ["arrow", "tbar", "open", "none"]},
+          "source_refs": {"type": "array", "items": {"type": "string"}},
+          "inferred": {"type": "boolean"},
+          "uncertainty": {"type": "string"}
+        }
+      }
+    },
+    "data_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "scale_type", "source_refs"],
+        "properties": {
+          "id": {"type": "string"},
+          "scale_type": {"type": "string", "enum": ["categorical", "continuous"]},
+          "domain": {"type": "array"},
+          "range": {"type": "array", "items": {"type": "string"}},
+          "stops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["value", "color"],
+              "properties": {
+                "value": {"type": "number"},
+                "color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}
+              }
+            }
+          },
+          "source_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "charts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "series", "source_refs"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string", "enum": ["bar", "line", "scatter"]},
+          "title": {"type": "string"},
+          "x_mm": {"type": "number"},
+          "y_mm": {"type": "number"},
+          "w_mm": {"type": "number"},
+          "h_mm": {"type": "number"},
+          "categories": {"type": "array", "items": {"type": "string"}},
+          "x_title": {"type": "string"},
+          "y_title": {"type": "string"},
+          "y_unit": {"type": "string"},
+          "y_min": {"type": "number"},
+          "y_max": {"type": "number"},
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "values", "source_refs"],
+              "properties": {
+                "name": {"type": "string"},
+                "values": {"type": "array", "items": {"type": "number"}},
+                "color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+                "mapping": {"type": "string"},
+                "source_refs": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          },
+          "source_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "legend": {
+      "type": "object",
+      "properties": {
+        "visible": {"type": "boolean"},
+        "title": {"type": "string"},
+        "width_mm": {"type": "number"},
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {"type": "string"},
+              "color": {"type": "string"},
+              "source_refs": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"type": "string", "enum": ["panel-label", "note"]},
+          "text": {"type": "string"},
+          "x_mm": {"type": "number"},
+          "y_mm": {"type": "number"},
+          "source_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "algorithm": {"type": "string"},
+        "positions": {"type": "object"}
+      }
+    },
+    "uncertainty": {"type": "array"},
+    "change_log": {"type": "array", "items": {"type": "object"}}
+  }
+}

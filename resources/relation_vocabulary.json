@@ -1,0 +1,24 @@
+{
+  "comment": "Machine-readable relation glyph vocabulary. marker: arrow=filled triangle, tbar=inhibition bar, open=open arrow, none=plain line. dash null means solid.",
+  "types": {
+    "activation":            {"dash": null, "marker": "arrow", "label_en": "Activation / promotes", "label_zh": "激活 / 促进"},
+    "inhibition":            {"dash": null, "marker": "tbar", "label_en": "Inhibition / suppresses", "label_zh": "抑制 / 阻遏"},
+    "indirect_activation":   {"dash": "2.4,1.5", "marker": "arrow", "label_en": "Indirect activation", "label_zh": "间接激活"},
+    "indirect_inhibition":   {"dash": "2.4,1.5", "marker": "tbar", "label_en": "Indirect inhibition", "label_zh": "间接抑制"},
+    "association":           {"dash": null, "marker": "none", "label_en": "Association / binding", "label_zh": "关联 / 结合"},
+    "binding":               {"dash": null, "marker": "none", "label_en": "Binding", "label_zh": "结合"},
+    "translocation":         {"dash": "2.4,1.5", "marker": "open", "label_en": "Translocation", "label_zh": "转位 / 转运"},
+    "process":               {"dash": null, "marker": "arrow", "label_en": "Process flow", "label_zh": "流程走向"},
+    "production":            {"dash": null, "marker": "open", "label_en": "Production / release", "label_zh": "产生 / 释放"},
+    "phosphorylation":       {"dash": null, "marker": "arrow", "label_en": "Phosphorylation", "label_zh": "磷酸化"},
+    "dephosphorylation":     {"dash": null, "marker": "arrow", "label_en": "Dephosphorylation", "label_zh": "去磷酸化"},
+    "degradation":           {"dash": "2.4,1.5", "marker": "tbar", "label_en": "Degradation", "label_zh": "降解"},
+    "unknown":               {"dash": null, "marker": "open", "label_en": "Unspecified relation", "label_zh": "关系类型未明确"}
+  },
+  "hard_rules": [
+    "Containment (A contains B) is rendered as a group box, never as an arrow edge.",
+    "Edge direction follows source->target; reversing from/to flips the biology, so endpoints must be transcribed in the order stated in the source.",
+    "If the source only says 'is involved in' without polarity, use type=unknown and record uncertainty; do not guess activation or inhibition.",
+    "Dashed lines are reserved for indirect/translocation/degradation relations; do not use them decoratively."
+  ]
+}
